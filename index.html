@@ -315,20 +315,20 @@
       }
 
       /* ==========================================================================
-         DOKUMENTASI FOTO 2 & 3 (DIBAWAH KALIMAT UCAPAN) - DIKECILKAN TEKS & DIPERBESAR GAMBAR
+         DOKUMENTASI FOTO 2 & 3 (DIBAWAH KALIMAT UCAPAN)
          ========================================================================== */
       .running-photos-title {
-        font-size: 12px; /* Dikecilkan dari 14px */
+        font-size: 12px;
         font-weight: bold;
         color: #000;
         margin-bottom: 15px;
-        text-transform: none; /* Dihilangkan kapital penuh agar estetis */
+        text-transform: none;
         background: #00ffcc;
-        border: 1.5px solid #000; /* Dikecilkan dari 2px */
-        padding: 3px 8px; /* Dikecilkan paddingnya */
+        border: 1.5px solid #000;
+        padding: 3px 8px;
         display: inline-block;
         border-radius: 6px;
-        box-shadow: 1.5px 1.5px 0px #000; /* Dikecilkan bayangannya */
+        box-shadow: 1.5px 1.5px 0px #000;
         margin-top: 10px;
       }
 
@@ -340,8 +340,8 @@
       }
 
       .bottom-photo-box {
-        width: 155px; /* Diperbesar maksimal dari 115px */
-        height: 155px; /* Diperbesar maksimal dari 115px */
+        width: 155px;
+        height: 155px;
         border-radius: 50%;
         border: 4.5px solid #0066cc;
         overflow: hidden;
@@ -361,33 +361,6 @@
       }
       .bottom-box-2 {
         animation: alay-float-2 3.2s infinite ease-in-out alternate;
-      }
-
-      /* ==========================================================================
-         TOMBOL AUDIO MANUAL FLOATING (GARANSI BUNYI)
-         ========================================================================== */
-      .audio-control-btn {
-        position: fixed;
-        bottom: 15px;
-        left: 15px;
-        z-index: 100;
-        background: linear-gradient(135deg, #ffd700 0%, #ff0055 100%);
-        border: 2px solid #000;
-        border-radius: 50px;
-        padding: 10px 20px;
-        font-family: var(--font-alay);
-        font-weight: bold;
-        font-size: 13px;
-        cursor: pointer;
-        box-shadow: 3px 3px 0px #000;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        transition: all 0.2s ease;
-      }
-
-      .audio-control-btn:hover {
-        transform: scale(1.05);
       }
 
       /* Hujan Partikel Tulip, Mawar, Kopi, Jempol */
@@ -465,24 +438,19 @@
       Browser Anda tidak mendukung pemutaran audio.
     </audio>
 
-    <!-- FLOATING AUDIO CONTROLLER -->
-    <button class="audio-control-btn" id="audio-toggle" onclick="toggleAudio()">
-      <span id="audio-icon">🔇</span> <span id="audio-text">Nyalakan Musik</span>
-    </button>
-
     <!-- OVERLAY GERBANG UTAMA -->
     <div id="entrance-overlay">
       <div class="entrance-box">
         <h2>🤝🏼 SAMBUTAN HANGAT 🤝🏼</h2>
         <p>Ada pesan silaturahmi penuh berkah untuk Mas Aripin. Silakan ketuk tombol di bawah ini...</p>
-        <button class="btn-masuk" onclick="bukaSilaturahmi()">Buka Silaturahmi 🫱🏼‍🫲🏼</button>
+        <button class="btn-masuk" onclick="bukaSilaturahmi()">Buka Silaturahmi 🫱🏼‍Gl</button>
       </div>
     </div>
 
     <!-- KARTU UTAMA (SINGLE PAGE) -->
     <div class="card-container" id="main-card">
       
-      <!-- Seamless CSS Running Text (Menjamin teks terus berjalan tanpa terhenti/terpotong) -->
+      <!-- Seamless CSS Running Text -->
       <div class="top-marquee">
         <div class="marquee-content-css">
           <span>🎉 HBD MAS ARIPIN TERKEREN SE-RT • WISH YOU ALL THE BEST • SALAM SANTUN SELALU 🎉</span>
@@ -550,10 +518,6 @@
          ========================================================================== -->
     <script>
       const audio = document.getElementById("backsound");
-      const audioToggle = document.getElementById("audio-toggle");
-      const audioIcon = document.getElementById("audio-icon");
-      const audioText = document.getElementById("audio-text");
-      let isPlaying = false;
 
       // Fungsi membuka gerbang silaturahmi & mulai musik
       function bukaSilaturahmi() {
@@ -563,38 +527,19 @@
           document.getElementById("main-card").style.display = "block";
         }, 500);
 
-        // Putar audio
+        // Putar audio langsung secara otomatis setelah user mengklik tombol masuk
         playAudio();
         
-        // Mulai hujan partikel (mawar, tulip, kopi, dll.)
+        // Mulai hujan partikel
         setInterval(createParticle, 250);
       }
 
-      // Fungsi memutar audio secara aman & memperbarui status tombol
+      // Fungsi memutar audio secara otomatis
       function playAudio() {
         audio.muted = false;
-        audio.play().then(() => {
-          isPlaying = true;
-          audioIcon.innerHTML = "🔊";
-          audioText.innerHTML = "Matikan Musik";
-        }).catch(err => {
+        audio.play().catch(err => {
           console.log("Audio play diblokir oleh browser:", err);
-          isPlaying = false;
-          audioIcon.innerHTML = "🔇";
-          audioText.innerHTML = "Nyalakan Musik";
         });
-      }
-
-      // Fungsi toggle audio manual via floating button
-      function toggleAudio() {
-        if (isPlaying) {
-          audio.pause();
-          isPlaying = false;
-          audioIcon.innerHTML = "🔇";
-          audioText.innerHTML = "Nyalakan Musik";
-        } else {
-          playAudio();
-        }
       }
 
       // Membuat partikel stiker bapack-bapack berjatuhan
