@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>🤝🏼 MILAD MUBARAK MAS ARIPIN 🤝🏼</title>
+    <title>🤝 MILAD MUBARAK MAS ARIPIN 🤝</title>
     <link rel="icon" type="image/x-icon" href="https://feeldreams.github.io/main/icon.png" />
     
     <!-- Google Fonts untuk nuansa retro & alay -->
@@ -12,8 +12,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Itim&family=Chakra+Petch:wght@700&family=Fredoka:wght@600;700&display=swap" rel="stylesheet" />
     
-    <!-- Library SweetAlert2 -->
+    <!-- Library SweetAlert2 & Canvas-Confetti untuk Efek Kembang Api/Kertas -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 
     <style>
       /* ==========================================================================
@@ -82,6 +83,7 @@
         align-items: center;
         height: 38px;
         position: relative;
+        z-index: 15;
       }
 
       .marquee-content-css {
@@ -165,7 +167,7 @@
       }
 
       /* ==========================================================================
-         KARTU KONTEN UTAMA
+         KARTU KONTEN UTAMA - DIBERI overflow: hidden AGAR CONFETTI TIDAK KELUAR AREA PUTIH
          ========================================================================== */
       .card-container {
         width: 100%;
@@ -178,6 +180,7 @@
         text-align: center;
         z-index: 10;
         position: relative;
+        overflow: hidden; /* Menjamin kembang api kertas tetap berada di dalam area kartu putih */
         display: none; /* Muncul setelah tombol masuk diklik */
         animation: popUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
       }
@@ -194,10 +197,12 @@
         animation: rainbow-shift 3s linear infinite;
         -webkit-text-stroke: 1.5px #000000;
         filter: drop-shadow(3px 3px 0px #000);
+        position: relative;
+        z-index: 15;
       }
 
       /* ==========================================================================
-         FOTO 1 (FOTO UTAMA BULAT SUPER BESAR - TIDAK KEPOTONG, FULL GAMBAR)
+         FOTO 1 (FOTO UTAMA BULAT SUPER BESAR - TANPA TOPI)
          ========================================================================== */
       .main-photo-wrapper {
         position: relative;
@@ -207,6 +212,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        z-index: 15;
       }
 
       .main-photo-frame {
@@ -217,6 +223,7 @@
         overflow: hidden;
         box-shadow: 0 0 25px rgba(255, 0, 85, 0.6);
         z-index: 2;
+        cursor: pointer;
         animation: alay-float 3.5s infinite ease-in-out alternate;
       }
 
@@ -259,6 +266,7 @@
         box-shadow: 5px 5px 0px #000;
         position: relative;
         overflow: hidden;
+        z-index: 15;
       }
 
       /* Flashing border effect */
@@ -330,6 +338,8 @@
         border-radius: 6px;
         box-shadow: 1.5px 1.5px 0px #000;
         margin-top: 10px;
+        position: relative;
+        z-index: 15;
       }
 
       .bottom-photos-row {
@@ -337,6 +347,8 @@
         justify-content: center;
         gap: 25px;
         margin: 0 auto 10px;
+        position: relative;
+        z-index: 15;
       }
 
       .bottom-photo-box {
@@ -363,7 +375,7 @@
         animation: alay-float-2 3.2s infinite ease-in-out alternate;
       }
 
-      /* Hujan Partikel Tulip, Mawar, Kopi, Jempol */
+      /* Hujan Partikel Tulip, Mawar, Kopi, Jempol (Tetap jatuh di seluruh body layar) */
       .particle {
         position: fixed;
         top: -10vh;
@@ -441,15 +453,18 @@
     <!-- OVERLAY GERBANG UTAMA -->
     <div id="entrance-overlay">
       <div class="entrance-box">
-        <h2>🤝🏼 SAMBUTAN HANGAT 🤝🏼</h2>
+        <h2>🤝 SAMBUTAN HANGAT 🤝</h2>
         <p>Ada pesan silaturahmi penuh berkah untuk Mas Aripin. Silakan ketuk tombol di bawah ini...</p>
-        <button class="btn-masuk" onclick="bukaSilaturahmi()">Buka Silaturahmi 🤝🏼</button>
+        <button class="btn-masuk" onclick="bukaSilaturahmi()">Buka Silaturahmi 🤝</button>
       </div>
     </div>
 
     <!-- KARTU UTAMA (SINGLE PAGE) -->
     <div class="card-container" id="main-card">
       
+      <!-- Canvas Confetti Kustom (Membatasi semburan kembang api kertas agar hanya muncul di area putih) -->
+      <canvas id="card-confetti-canvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 10; border-radius: 30px;"></canvas>
+
       <!-- Seamless CSS Running Text -->
       <div class="top-marquee">
         <div class="marquee-content-css">
@@ -460,7 +475,7 @@
 
       <h1 class="wordart-header">Salam Online Qu</h1>
 
-      <!-- FOTO 1 (Foto Bulat Diperbesar Maksimal, Bunga Memutari Presisi 100%, Full Foto) -->
+      <!-- FOTO 1 (Foto Bulat Diperbesar Maksimal, Bunga Memutari Presisi 100%, Tanpa Topi) -->
       <div class="main-photo-wrapper">
         <div class="flower-orbit">
           <span style="--i:1">🌹</span>
@@ -472,7 +487,9 @@
           <span style="--i:7">🌹</span>
           <span style="--i:8">🌷</span>
         </div>
-        <div class="main-photo-frame">
+        
+        <!-- Bingkai Foto Utama (Klik untuk meledakkan kembang api/confetti) -->
+        <div class="main-photo-frame" onclick="triggerPhotoConfetti()">
           <img src="foto1.png" alt="Mas Aripin" />
         </div>
       </div>
@@ -498,7 +515,7 @@
         </div>
       </div>
 
-      <!-- DOKUMENTASI FOTO 2 & 3 (DIPINDAHKAN DI BAWAH KOTAK UCAPAN) -->
+      <!-- DOKUMENTASI FOTO 2 & 3 -->
       <div class="running-photos-title">👀 dokumentasiku pas bubuk h3h3</div>
       <div class="bottom-photos-row">
         <!-- Foto 2 -->
@@ -515,9 +532,16 @@
 
     <!-- ==========================================================================
          LOGIKA INTERAKTIF JAVASCRIPT
-         ========================================================================== -->
+         ========================================================================= -->
     <script>
       const audio = document.getElementById("backsound");
+
+      // Inisialisasi instance canvas-confetti khusus untuk di area putih kartu
+      const cardCanvas = document.getElementById("card-confetti-canvas");
+      const cardConfetti = confetti.create(cardCanvas, {
+        resize: true,
+        useWorker: true
+      });
 
       // Fungsi membuka gerbang silaturahmi & mulai musik
       function bukaSilaturahmi() {
@@ -525,12 +549,17 @@
         setTimeout(() => {
           document.getElementById("entrance-overlay").style.display = "none";
           document.getElementById("main-card").style.display = "block";
+          
+          // Efek semburan kembang api kertas awal saat kartu terbuka (di area putih)
+          triggerBigConfetti();
+          // Jalankan semburan berkala otomatis terus-menerus (di area putih)
+          startConfettiInterval();
         }, 500);
 
         // Putar audio langsung secara otomatis setelah user mengklik tombol masuk
         playAudio();
         
-        // Mulai hujan partikel
+        // Mulai hujan partikel mawar, tulip, kopi (seluruh layar)
         setInterval(createParticle, 250);
       }
 
@@ -539,6 +568,46 @@
         audio.muted = false;
         audio.play().catch(err => {
           console.log("Audio play diblokir oleh browser:", err);
+        });
+      }
+
+      // ==========================================================================
+      // LOGIKA KEMBANG API KERTAS KHUSUS DI AREA KARTU PUTIH
+      // ==========================================================================
+      function triggerBigConfetti() {
+        cardConfetti({
+          particleCount: 100,
+          spread: 80,
+          origin: { x: 0.5, y: 0.7 }
+        });
+      }
+
+      // Nyembur terus secara berkala (menyembur tiada henti di pojok kiri & kanan kartu)
+      function startConfettiInterval() {
+        setInterval(() => {
+          // Semburan kecil dari pojok kiri bawah kartu mengarah ke kanan atas
+          cardConfetti({
+            particleCount: 8,
+            angle: 60,
+            spread: 45,
+            origin: { x: 0.05, y: 0.95 }
+          });
+          // Semburan kecil dari pojok kanan bawah kartu mengarah ke kiri atas
+          cardConfetti({
+            particleCount: 8,
+            angle: 120,
+            spread: 45,
+            origin: { x: 0.95, y: 0.95 }
+          });
+        }, 1200); // Menyembur terus setiap 1.2 detik
+      }
+
+      // Kembang api kertas interaktif ketika mengklik foto utama Mas Aripin
+      function triggerPhotoConfetti() {
+        cardConfetti({
+          particleCount: 80,
+          spread: 60,
+          origin: { x: 0.5, y: 0.3 }
         });
       }
 
