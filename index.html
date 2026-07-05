@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>🤝🏼 MILAD MUBARAK BAPAK ARIFIN 🤝🏼</title>
+    <title>🤝🏼 MILAD MUBARAK MAS ARIPIN 🤝🏼</title>
     <link rel="icon" type="image/x-icon" href="https://feeldreams.github.io/main/icon.png" />
     
     <!-- Google Fonts untuk nuansa retro & alay -->
@@ -17,11 +17,12 @@
 
     <style>
       /* ==========================================================================
-         AESTHETIC JOKES BAPACK-BAPACK WA (FULL ALAY, WARNA-WARNI & MENGKILAP)
+         SISTEM STYLE JOKES BAPACK-BAPACK WA (FULL ALAY, WARNA-WARNI & MENGKILAP)
          ========================================================================== */
       :root {
         --font-alay: "Itim", "Comic Sans MS", cursive, sans-serif;
         --border-tebal: 4px solid #000000;
+        --warna-pelangi: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
       }
 
       * {
@@ -37,19 +38,19 @@
         overflow-x: hidden;
         background-color: #00ffcc;
         position: relative;
-        padding: 20px 10px 60px 10px;
+        padding: 10px 10px 60px 10px;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
       }
 
-      /* Background Gambar Asri khas WhatsApp Bapack-bapack */
+      /* Background Gambar Sawah Asri khas WhatsApp Dads */
       #bg-view {
         position: fixed;
         top: 0; left: 0; right: 0; bottom: 0;
         z-index: -2;
-        background-image: url('https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?q=80&w=1920'); /* Pemandangan sawah hijau asri */
+        background-image: url('https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?q=80&w=1920');
         background-size: cover;
         background-position: center;
         opacity: 0.85;
@@ -59,17 +60,56 @@
         position: fixed;
         top: 0; left: 0; right: 0; bottom: 0;
         z-index: -1;
-        background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.4) 100%);
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0.45) 100%);
         pointer-events: none;
       }
 
       /* ==========================================================================
-         OVERLAY PEMBUKA SILATURAHMI (BYPASS AUDIO AUTOPLAY BROWSER)
+         SEAMLESS CSS MARQUEE (100% GARANSI JALAN DI SEMUA HP & BROWSER)
+         ========================================================================== */
+      .top-marquee {
+        width: 100%;
+        background: #ff0055;
+        color: yellow;
+        font-weight: bold;
+        border: var(--border-tebal);
+        border-radius: 8px;
+        margin-bottom: 15px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        overflow: hidden;
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
+        height: 38px;
+        position: relative;
+      }
+
+      .marquee-content-css {
+        display: inline-flex;
+        white-space: nowrap;
+        animation: cssMarquee 15s linear infinite;
+        padding-left: 10px;
+      }
+
+      .marquee-content-css span {
+        padding-right: 50px;
+        font-size: 16px;
+        text-transform: uppercase;
+        display: inline-block;
+      }
+
+      @keyframes cssMarquee {
+        0% { transform: translate3d(0, 0, 0); }
+        100% { transform: translate3d(-50%, 0, 0); }
+      }
+
+      /* ==========================================================================
+         OVERLAY PEMBUKA (PINTU GERBANG SILATURAHMI)
          ========================================================================== */
       #entrance-overlay {
         position: fixed;
         top: 0; left: 0; right: 0; bottom: 0;
-        background: radial-gradient(circle, #ff0055 0%, #300018 100%);
+        background: radial-gradient(circle, #00ff99 0%, #002244 100%);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -81,11 +121,11 @@
 
       .entrance-box {
         background: rgba(255, 255, 255, 0.95);
-        border: 5px solid #ffd700;
+        border: 5px solid #ffcc00;
         padding: 35px 25px;
         border-radius: 20px;
         max-width: 450px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px #ffd700;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px #ffcc00;
         animation: pulse 1.5s infinite alternate;
       }
 
@@ -125,30 +165,30 @@
       }
 
       /* ==========================================================================
-         KARTU KONTEN UTAMA (SINGLE PAGE)
+         KARTU KONTEN UTAMA
          ========================================================================== */
       .card-container {
         width: 100%;
-        max-width: 550px;
-        background: rgba(255, 255, 255, 0.92);
+        max-width: 540px;
+        background: rgba(255, 255, 255, 0.93);
         border: 5px solid #000000;
-        border-radius: 25px;
-        box-shadow: 8px 8px 0px #000000, 0 0 30px rgba(255, 255, 255, 0.6);
-        padding: 30px 20px;
+        border-radius: 30px;
+        box-shadow: 10px 10px 0px #000000, 0 0 40px rgba(255, 255, 255, 0.8);
+        padding: 25px 15px;
         text-align: center;
         z-index: 10;
         position: relative;
         display: none; /* Muncul setelah tombol masuk diklik */
-        margin-top: 10px;
+        animation: popUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
       }
 
       /* Header WordArt Pelangi */
       .wordart-header {
-        font-size: 28px;
+        font-size: 30px;
         font-weight: 900;
         text-transform: uppercase;
-        margin-bottom: 25px;
-        background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+        margin-bottom: 20px;
+        background: var(--warna-pelangi);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         animation: rainbow-shift 3s linear infinite;
@@ -157,25 +197,26 @@
       }
 
       /* ==========================================================================
-         FOTO 1 (FOTO BESAR GERAK-GERAK)
+         FOTO 1 (FOTO UTAMA BULAT SUPER BESAR - TIDAK KEPOTONG, FULL GAMBAR)
          ========================================================================== */
       .main-photo-wrapper {
         position: relative;
-        width: 220px;
-        height: 220px;
+        width: 320px;
+        height: 320px;
         margin: 0 auto 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
       .main-photo-frame {
-        width: 100%;
-        height: 100%;
+        width: 270px;
+        height: 270px;
         border-radius: 50%;
         border: 6px solid #ff0055;
         overflow: hidden;
-        box-shadow: 0 0 20px rgba(255, 0, 85, 0.4), inset 0 0 10px rgba(0,0,0,0.5);
-        position: relative;
+        box-shadow: 0 0 25px rgba(255, 0, 85, 0.6);
         z-index: 2;
-        /* Animasi mengapung & bergoyang alay */
         animation: alay-float 3.5s infinite ease-in-out alternate;
       }
 
@@ -183,39 +224,57 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+        object-position: center 10%;
       }
 
-      /* Hiasan Bunga Berputar di Belakang Foto 1 */
+      /* Wreath Bunga Presisi Berputar Mengelilingi Bulatan Foto */
       .flower-orbit {
         position: absolute;
-        top: -20px; left: -20px; right: -20px; bottom: -20px;
+        width: 320px;
+        height: 320px;
+        top: 0;
+        left: 0;
         z-index: 1;
         animation: spin 20s infinite linear;
         pointer-events: none;
       }
 
-      .flower-orbit::before {
-        content: "🌷 🌹 🌻 🌸 🌺 🌼 🌹 🌷";
-        font-size: 26px;
-        display: block;
-        letter-spacing: 6px;
+      .flower-orbit span {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        font-size: 28px;
+        transform: translate(-50%, -50%) rotate(calc(var(--i) * 45deg)) translateY(-145px);
       }
 
       /* ==========================================================================
-         TEKS DO'A & PANTUN ALAY BAPACK-BAPACK
+         KOTAK UCAPAN
          ========================================================================== */
       .greeting-box {
         background: #ffffcc;
         border: 3px solid #000;
-        border-radius: 18px;
-        padding: 20px;
+        border-radius: 20px;
+        padding: 20px 15px;
         margin-bottom: 25px;
         box-shadow: 5px 5px 0px #000;
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* Flashing border effect */
+      .greeting-box::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        border: 4px solid #ffcc00;
+        border-radius: 18px;
+        pointer-events: none;
+        animation: flash-border 1s infinite alternate;
       }
 
       .text-assalamualaikum {
         color: #0066cc;
-        font-size: 19px;
+        font-size: 18px;
         font-weight: bold;
         margin-bottom: 12px;
         -webkit-text-stroke: 0.5px #000;
@@ -223,22 +282,28 @@
       }
 
       .text-utama {
-        font-size: 21px;
+        font-size: 22px;
         font-weight: bold;
-        line-height: 1.5;
+        line-height: 1.4;
         color: #ff0055;
         text-shadow: 1.5px 1.5px 0px #000;
         margin-bottom: 15px;
       }
 
-      .pantun-text {
-        font-size: 16px;
-        font-style: italic;
-        color: #008080;
-        font-weight: bold;
-        line-height: 1.6;
-        border-top: 2px dashed rgba(0,0,0,0.15);
-        padding-top: 12px;
+      /* GAYA RUNNING TEXT WARNA WARNI UNTUK TUNTUTAN BAKSO */
+      .bakso-demand {
+        font-family: var(--font-alay);
+        font-size: 20px;
+        font-weight: 900;
+        color: #008000;
+        background: #fff;
+        border: 2px solid #000;
+        padding: 10px;
+        border-radius: 10px;
+        margin: 15px 0;
+        display: block;
+        box-shadow: 3px 3px 0px #000;
+        animation: text-pulse 0.8s infinite alternate;
       }
 
       .salam-santun {
@@ -250,60 +315,52 @@
       }
 
       /* ==========================================================================
-         FOTO 2 & 3 (SLIDING / MARQUEE DI BAWAHNYA)
+         DOKUMENTASI FOTO 2 & 3 (DIBAWAH KALIMAT UCAPAN) - DIKECILKAN TEKS & DIPERBESAR GAMBAR
          ========================================================================== */
       .running-photos-title {
-        font-size: 15px;
+        font-size: 12px; /* Dikecilkan dari 14px */
         font-weight: bold;
         color: #000;
-        margin-bottom: 8px;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
+        margin-bottom: 15px;
+        text-transform: none; /* Dihilangkan kapital penuh agar estetis */
+        background: #00ffcc;
+        border: 1.5px solid #000; /* Dikecilkan dari 2px */
+        padding: 3px 8px; /* Dikecilkan paddingnya */
+        display: inline-block;
+        border-radius: 6px;
+        box-shadow: 1.5px 1.5px 0px #000; /* Dikecilkan bayangannya */
+        margin-top: 10px;
       }
 
-      .marquee-container {
-        width: 100%;
-        overflow: hidden;
-        white-space: nowrap;
-        border: 3px solid #000;
-        background: #ffd700;
-        border-radius: 12px;
-        padding: 12px 0;
-        box-shadow: inset 0 0 10px rgba(0,0,0,0.4), 4px 4px 0px #000;
-        margin-bottom: 20px;
-      }
-
-      /* Animasi Bergeser Kanan Ke Kiri */
-      .marquee-content {
-        display: inline-flex;
-        gap: 40px;
-        animation: marquee-scroll 12s linear infinite;
-      }
-
-      .marquee-img-box {
+      .bottom-photos-row {
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 5px;
+        justify-content: center;
+        gap: 25px;
+        margin: 0 auto 10px;
       }
 
-      .marquee-img {
-        width: 130px;
-        height: 130px;
+      .bottom-photo-box {
+        width: 155px; /* Diperbesar maksimal dari 115px */
+        height: 155px; /* Diperbesar maksimal dari 115px */
+        border-radius: 50%;
+        border: 4.5px solid #0066cc;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      }
+
+      .bottom-photo-box img {
+        width: 100%;
+        height: 100%;
         object-fit: cover;
-        border: 3px solid #ff0055;
-        border-radius: 12px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        object-position: center top;
       }
 
-      .marquee-label {
-        font-size: 11px;
-        font-weight: bold;
-        color: #000;
-        background: #fff;
-        border: 1px solid #000;
-        padding: 2px 8px;
-        border-radius: 20px;
+      /* Efek goyang mengapung bergantian */
+      .bottom-box-1 {
+        animation: alay-float-1 3s infinite ease-in-out alternate;
+      }
+      .bottom-box-2 {
+        animation: alay-float-2 3.2s infinite ease-in-out alternate;
       }
 
       /* ==========================================================================
@@ -314,7 +371,7 @@
         bottom: 15px;
         left: 15px;
         z-index: 100;
-        background: linear-gradient(135deg, #00ffcc 0%, #0099ff 100%);
+        background: linear-gradient(135deg, #ffd700 0%, #ff0055 100%);
         border: 2px solid #000;
         border-radius: 50px;
         padding: 10px 20px;
@@ -349,7 +406,7 @@
          ========================================================================== */
       @keyframes pulse {
         0% { transform: scale(1); }
-        100% { transform: scale(1.03); }
+        100% { transform: scale(1.02); }
       }
 
       @keyframes spin {
@@ -362,16 +419,20 @@
         100% { filter: hue-rotate(360deg); }
       }
 
-      @keyframes marquee-scroll {
-        0% { transform: translateX(100vw); }
-        100% { transform: translateX(-100%); }
+      /* Goyang alay foto utama */
+      @keyframes alay-float {
+        0% { transform: translateY(0) rotate(-4deg); }
+        100% { transform: translateY(-10px) rotate(4deg); }
       }
 
-      /* Animasi Goyang Foto 1 */
-      @keyframes alay-float {
-        0% { transform: translateY(0) rotate(-6deg) scale(1); }
-        50% { transform: translateY(-12px) rotate(6deg) scale(1.04); }
-        100% { transform: translateY(0) rotate(-6deg) scale(1); }
+      /* Goyang alay foto bawah bergantian */
+      @keyframes alay-float-1 {
+        0% { transform: translateY(0) rotate(-6deg); }
+        100% { transform: translateY(-8px) rotate(6deg); }
+      }
+      @keyframes alay-float-2 {
+        0% { transform: translateY(-8px) rotate(6deg); }
+        100% { transform: translateY(0) rotate(-6deg); }
       }
 
       @keyframes fall {
@@ -379,6 +440,16 @@
         10% { opacity: 1; }
         90% { opacity: 1; }
         100% { transform: translateY(105vh) rotate(360deg); opacity: 0; }
+      }
+
+      @keyframes flash-border {
+        0% { border-color: #ffcc00; }
+        100% { border-color: #ff0055; }
+      }
+
+      @keyframes text-pulse {
+        0% { transform: scale(0.97); color: #008000; }
+        100% { transform: scale(1.03); color: #ff0055; }
       }
     </style>
   </head>
@@ -394,7 +465,7 @@
       Browser Anda tidak mendukung pemutaran audio.
     </audio>
 
-    <!-- FLOATING AUDIO CONTROLLER (Garansi jika audio diblokir browser saat awal) -->
+    <!-- FLOATING AUDIO CONTROLLER -->
     <button class="audio-control-btn" id="audio-toggle" onclick="toggleAudio()">
       <span id="audio-icon">🔇</span> <span id="audio-text">Nyalakan Musik</span>
     </button>
@@ -403,76 +474,75 @@
     <div id="entrance-overlay">
       <div class="entrance-box">
         <h2>🤝🏼 SAMBUTAN HANGAT 🤝🏼</h2>
-        <p>Ada pesan silaturahmi penuh berkah untuk Bapak Arifin. Silakan ketuk tombol di bawah ini...</p>
+        <p>Ada pesan silaturahmi penuh berkah untuk Mas Aripin. Silakan ketuk tombol di bawah ini...</p>
         <button class="btn-masuk" onclick="bukaSilaturahmi()">Buka Silaturahmi 🫱🏼‍🫲🏼</button>
       </div>
     </div>
 
     <!-- KARTU UTAMA (SINGLE PAGE) -->
     <div class="card-container" id="main-card">
-      <h1 class="wordart-header">Salam Online Qu</h1>
-
-      <!-- FOTO 1 (Foto Besar Gerak-gerak) -->
-      <div class="main-photo-wrapper">
-        <div class="flower-orbit"></div>
-        <div class="main-photo-frame">
-          <img src="foto1.png" alt="Bapak Arifin" />
+      
+      <!-- Seamless CSS Running Text (Menjamin teks terus berjalan tanpa terhenti/terpotong) -->
+      <div class="top-marquee">
+        <div class="marquee-content-css">
+          <span>🎉 HBD MAS ARIPIN TERKEREN SE-RT • WISH YOU ALL THE BEST • SALAM SANTUN SELALU 🎉</span>
+          <span>🎉 HBD MAS ARIPIN TERKEREN SE-RT • WISH YOU ALL THE BEST • SALAM SANTUN SELALU 🎉</span>
         </div>
       </div>
 
-      <!-- Kotak Ucapan & Doa -->
+      <h1 class="wordart-header">Salam Online Qu</h1>
+
+      <!-- FOTO 1 (Foto Bulat Diperbesar Maksimal, Bunga Memutari Presisi 100%, Full Foto) -->
+      <div class="main-photo-wrapper">
+        <div class="flower-orbit">
+          <span style="--i:1">🌹</span>
+          <span style="--i:2">🌷</span>
+          <span style="--i:3">🌻</span>
+          <span style="--i:4">🌸</span>
+          <span style="--i:5">🌺</span>
+          <span style="--i:6">🌼</span>
+          <span style="--i:7">🌹</span>
+          <span style="--i:8">🌷</span>
+        </div>
+        <div class="main-photo-frame">
+          <img src="foto1.png" alt="Mas Aripin" />
+        </div>
+      </div>
+
+      <!-- KOTAK UCAPAN & DOA (KALIMAT UCAPAN DIATAS DOKUMENTASI) -->
       <div class="greeting-box">
         <div class="text-assalamualaikum">
           Assalamu'alaikum Warohmatullohi Wabarokatuh
         </div>
         
         <div class="text-utama">
-          Selamat Hari Lahir buat Sabat Online Qu Yang Terhormat Bapak Arifin 🙏🏼🌹
+          Selamat Hari Lahir buat Sabat Online Qu Yang Terhormat Mas Aripin 🙏🏼
         </div>
-        
-        <div class="pantun-text">
-          Pergi ke pasar beli kencur,<br>
-          Pulangnya mampir ke stasiun...<br>
-          Meskipun wajahmu semakin hancur,<br>
-          Yang penting kamu selamat ulang tahun! 🤪🎉
-        </div>
+
+        <!-- Teks Tuntutan Bakso -->
+        <span class="bakso-demand">
+          🍜 jo lali sesok baksoooo koyo biasane boloo! 👍🏼
+        </span>
         
         <div class="salam-santun">
-          Salam Santun & Bahagia Selalu 👍🏼☕🌷
+          Mugo-mugo sehat, sukses, lan berkah umuripun.<br>
+          Salam Santun & Bahagia Selalu 🙏🏼☕🌷
         </div>
       </div>
 
-      <div class="running-photos-title">👀 Dokumentasi Bukti Silaturahmi</div>
-
-      <!-- FOTO 2 & 3 (Marquee Running Text Bergerak dari Kanan ke Kiri) -->
-      <div class="marquee-container">
-        <div class="marquee-content">
-          <!-- Foto 2 -->
-          <div class="marquee-img-box">
-            <img class="marquee-img" src="foto2.jpg" alt="Dokumentasi 1" />
-            <div class="marquee-label">Dokumentasi 1 📸</div>
-          </div>
-          <!-- Foto 3 -->
-          <div class="marquee-img-box">
-            <img class="marquee-img" src="foto3.jpg" alt="Dokumentasi 2" />
-            <div class="marquee-label">Dokumentasi 2 📸</div>
-          </div>
-          <!-- Foto 2 (Duplikasi agar efek marquee terlihat mengalir panjang) -->
-          <div class="marquee-img-box">
-            <img class="marquee-img" src="foto2.jpg" alt="Dokumentasi 1 (Dup)" />
-            <div class="marquee-label">Salam Jempol 👍🏼</div>
-          </div>
-          <!-- Foto 3 (Duplikasi) -->
-          <div class="marquee-img-box">
-            <img class="marquee-img" src="foto3.jpg" alt="Dokumentasi 2 (Dup)" />
-            <div class="marquee-label">Kopi Pagi ☕</div>
-          </div>
+      <!-- DOKUMENTASI FOTO 2 & 3 (DIPINDAHKAN DI BAWAH KOTAK UCAPAN) -->
+      <div class="running-photos-title">👀 dokumentasiku pas bubuk h3h3</div>
+      <div class="bottom-photos-row">
+        <!-- Foto 2 -->
+        <div class="bottom-photo-box bottom-box-1">
+          <img src="foto2.jpg" alt="Dokumentasi 2" />
+        </div>
+        <!-- Foto 3 -->
+        <div class="bottom-photo-box bottom-box-2">
+          <img src="foto3.jpg" alt="Dokumentasi 3" />
         </div>
       </div>
 
-      <div class="salam-santun" style="margin-top: 10px; font-size: 14px; color: #666; -webkit-text-stroke: 0px;">
-        *Silakan klik tombol speaker di pojok kiri bawah jika musik belum berbunyi.
-      </div>
     </div>
 
     <!-- ==========================================================================
